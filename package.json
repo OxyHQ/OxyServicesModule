@@ -15,7 +15,11 @@
   "keywords": [],
   "author": "Albert Isern Alvarez",
   "company": "Oxy",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OxyHQ/OxyServicesModule.git"
+  },
   "devDependencies": {
     "@types/next-auth": "^3.15.0",
     "@types/node": "^20.11.17",

@@ -1,0 +1,18 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 13, // Or your desired ECMAScript version
+    "sourceType": "module",
+    "project": "./tsconfig.json" // If you use a tsconfig.json file
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier" // If you also use Prettier for formatting
+  ],
+  "rules": {
+    // Your custom ESLint rules here (example)
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}

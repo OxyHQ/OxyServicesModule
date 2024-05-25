@@ -1,4 +1,4 @@
-import usePeableSession from "./hooks/usePeableSession";
+import useOxySession from "./hooks/useOxySession";
 import getUserById from "./hooks/getUserById";
 
-export { usePeableSession, getUserById };
+export { useOxySession, getUserById };

@@ -62,7 +62,7 @@ export const useSessionStore = create<SessionState>((set) => {
   };
 });
 
-function usePeableSession() {
+function useOxySession() {
   const { session, status, error, fetchSessionData } = useSessionStore();
 
   useEffect(() => {
@@ -72,4 +72,4 @@ function usePeableSession() {
   return { session, status, error };
 }
 
-export default usePeableSession;
+export default useOxySession;

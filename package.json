@@ -1,7 +1,8 @@
 {
   "name": "@oxyhq/services",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
+  "homepage": "https://oxy.so/",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [

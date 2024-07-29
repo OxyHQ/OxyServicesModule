@@ -3,21 +3,22 @@ import { OXY_AUTH_URL } from "../config";
 
 interface User {
   id: string;
+  username: string;
   name: string;
   email: string;
   role: string;
   avatar: string;
 }
 
-const getUserById = async (id?: string[], fields?: (keyof User)[]) => {
+const getUserById = async (id?: string | string[], fields?: (keyof User)[]) => {
   try {
-    const response = await axios.get(OXY_AUTH_URL + "/api/users/${id}");
+    const response = await axios.get(OXY_AUTH_URL + `/api/users/${id}`);
     const user = fields
       ? fields.reduce(
           (obj, key) => ({ ...obj, [key]: response.data[key] }),
           {} as User
         )
-      : response.data;
+      : (response.data as User);
     return user;
   } catch (error) {
     if (axios.isAxiosError(error)) {

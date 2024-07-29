@@ -1,6 +1,6 @@
 {
   "name": "@oxyhq/services",
-  "version": "0.0.19",
+  "version": "0.0.48",
   "description": "",
   "homepage": "https://oxy.so/",
   "main": "./dist/index.js",
@@ -31,19 +31,25 @@
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.56.0",
     "ncp": "^2.0.0",
     "sass": "^1.77.2",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.40.0",
     "axios": "^1.6.8",
+    "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
+    "framer-motion": "^11.2.9",
     "localforage": "^1.10.0",
+    "postcss": "^8.4.38",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
+    "tailwind-merge": "^2.3.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.2"
   }

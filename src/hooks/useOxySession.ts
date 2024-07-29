@@ -13,7 +13,7 @@ interface SessionModel {
     lastname: string;
     email: string;
     verified: boolean;
-    profile_image_url: string;
+    avatar: string;
     created_at: string;
   };
 }

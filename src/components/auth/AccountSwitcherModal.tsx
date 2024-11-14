@@ -44,6 +44,12 @@ export const AccountSwitcherModal = forwardRef<
 
   if (!session) return null;
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.currentTarget === e.target) {
+      onClose();
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: "100%" }}
@@ -53,12 +59,14 @@ export const AccountSwitcherModal = forwardRef<
         ease: "easeInOut",
         duration: 0.2,
       }}
-      className="fixed m-auto top-0 bottom-0 left-0 right-0 w-fit h-fit z-10 flex flex-col items-center justify-center
-    space-y-3 rounded-3xl bg-indigo-50 px-5 py-3 text-sm font-medium text-zinc-700
-    shadow-md shadow-[#b4bebb]"
+      className={styles.container}
       role="group"
+      onClick={handleBackdropClick}
     >
-      <button className="absolute right-3 top-3 rounded-full bg-indigo-50 p-1 hover:bg-zinc-200">
+      <button
+        className="absolute right-3 top-3 rounded-full bg-indigo-50 p-1 hover:bg-zinc-200"
+        onClick={onClose}
+      >
         <AiOutlineClose className="h-5 w-5 rounded-full stroke-2 text-zinc-700" />
       </button>
       <p>{session?.user?.email}</p>

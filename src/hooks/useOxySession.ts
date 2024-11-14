@@ -54,9 +54,34 @@ export const useSessionStore = create<SessionState>((set) => {
         const response = await axios.get(
           OXY_AUTH_URL + "/api/session/" + clientKey
         );
+        if (response.status !== 200) {
+          throw new Error(`Unexpected response status: ${response.status}`);
+        }
         set({ session: response.data, status: "success" });
       } catch (error) {
-        set({ error, status: "error" });
+        if (axios.isAxiosError(error)) {
+          if (error.response) {
+            set({
+              error: `Network error: ${error.message}, Status code: ${error.response.status}`,
+              status: "error",
+            });
+          } else if (error.request) {
+            set({
+              error: "Network error: No response received from server.",
+              status: "error",
+            });
+          } else {
+            set({
+              error: `Network error: ${error.message}`,
+              status: "error",
+            });
+          }
+        } else {
+          set({
+            error: "An unknown error occurred while loading the session data.",
+            status: "error",
+          });
+        }
       }
     },
   };

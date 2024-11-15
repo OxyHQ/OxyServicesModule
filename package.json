@@ -1,6 +1,6 @@
 {
   "name": "@oxyhq/services",
-  "version": "0.0.62",
+  "version": "0.0.63",
   "description": "",
   "homepage": "https://oxy.so/",
   "main": "./dist/index.js",

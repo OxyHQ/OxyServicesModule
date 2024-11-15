@@ -1,4 +1,11 @@
-# OxyServicesModule
+# Oxy Services Module 🚀
+
+The Oxy Services Module is a comprehensive package designed to provide reusable services and components for building front-end applications with Oxy. It includes hooks and components for session management, user handling, and more, making it easier to integrate Oxy-based functionalities into your React applications.
+
+## Features ✨
+- **Session Management**: Easily manage user sessions with hooks like `useOxySession`.
+- **User Handling**: Fetch and display user information using functions like `getUserById`.
+- **Components**: Ready-to-use components such as `SignInButton`, `AccountSwitcherModal`, and `SessionOwnerButton`.
 
 ## Usage Instructions
 

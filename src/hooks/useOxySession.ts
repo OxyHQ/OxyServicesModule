@@ -15,7 +15,9 @@ interface SessionModel {
     verified: boolean;
     avatar: string;
     created_at: string;
-    role: "ADMIN" | "USER" | "MODERATOR" | undefined; // Updated role property type
+    role: "ADMIN" | "USER" | "MODERATOR" | undefined;
+    isOAuth: boolean;
+    isTwoFactorEnabled: boolean;
   };
 }
 

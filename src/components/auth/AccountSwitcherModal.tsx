@@ -38,7 +38,11 @@ export const AccountSwitcherModal = forwardRef<
         const fetchedUser = await getUserById(session?.user?.id);
         setUser(fetchedUser);
       } catch (error) {
-        setError(error.message);
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("An unknown error occurred");
+        }
       }
     };
 

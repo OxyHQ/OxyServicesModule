@@ -19,8 +19,12 @@ export const Button = forwardRef<HTMLButtonElement, IButton>(
           "focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-100",
           "fill-secondary-100 [&>svg]:w-h2",
           "disabled-button",
-          className
+          className,
+          "hover:bg-neutral-500 active:bg-neutral-600",
+          "focus-visible:bg-neutral-500 focus-visible:outline-secondary-100"
         )}
+        aria-pressed={props["aria-pressed"]}
+        aria-disabled={props.disabled}
       >
         {children}
       </button>

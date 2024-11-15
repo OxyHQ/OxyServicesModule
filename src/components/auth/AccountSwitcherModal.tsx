@@ -30,11 +30,16 @@ export const AccountSwitcherModal = forwardRef<
 >(({ onClose }, ref) => {
   const { session } = useOxySession();
   const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const fetchedUser = await getUserById(session?.user?.id);
-      setUser(fetchedUser);
+      try {
+        const fetchedUser = await getUserById(session?.user?.id);
+        setUser(fetchedUser);
+      } catch (error) {
+        setError(error.message);
+      }
     };
 
     if (session) {
@@ -45,6 +50,7 @@ export const AccountSwitcherModal = forwardRef<
   if (!session) return null;
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
     if (e.currentTarget === e.target) {
       onClose();
     }

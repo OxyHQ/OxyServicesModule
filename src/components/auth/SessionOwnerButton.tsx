@@ -15,13 +15,17 @@ import { Avatar, UserName, UserUsername } from "../../features/profile";
 import { AccountSwitcherModal } from "./AccountSwitcherModal";
 
 export const SessionOwnerButton = () => {
-  const { session } = useOxySession();
+  const { session, error } = useOxySession();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const openModal = () => {
+  const openModal = React.useCallback(() => {
     setIsModalOpen(true);
-  };
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <>

@@ -4,6 +4,7 @@ import { create } from "zustand";
 import localforage from "localforage";
 
 import { OXY_AUTH_URL } from "../config";
+import { UserRole } from "../types"; // Import UserRole type
 
 interface SessionModel {
   user: {
@@ -15,7 +16,7 @@ interface SessionModel {
     verified: boolean;
     avatar: string;
     created_at: string;
-    role: "ADMIN" | "USER" | "MODERATOR" | undefined;
+    role: UserRole;
     isOAuth: boolean;
     isTwoFactorEnabled: boolean;
   };

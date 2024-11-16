@@ -4,7 +4,7 @@ import { create } from "zustand";
 import localforage from "localforage";
 
 import { OXY_AUTH_URL } from "../config";
-import { UserRole } from "../types"; // Import UserRole type
+import { UserRole } from "../types";
 
 interface SessionModel {
   user: {

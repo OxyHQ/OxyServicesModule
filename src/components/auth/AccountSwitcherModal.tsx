@@ -91,9 +91,14 @@ export const AccountSwitcherModal = forwardRef<
       <h2 className="md:text-2xl text-xl font-normal">
         Hi, {session?.user?.name}!
       </h2>
-      <button className="rounded-full border border-black px-7 py-2 text-blue-500 hover:bg-[#d3dfee]">
+      <a
+        href="https://accounts.oxy.so"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="rounded-full border border-black px-7 py-2 text-blue-500 hover:bg-[#d3dfee]"
+      >
         Manage your Oxy Account
-      </button>
+      </a>
       <div className="flex space-x-1">
         <button className="md:w-44 flex w-36 items-center space-x-2 rounded-l-full bg-white py-3 pl-3  hover:bg-zinc-200">
           <HiOutlinePlus className="h-7 w-7 rounded-full bg-indigo-50 p-1 text-blue-500" />
@@ -105,8 +110,21 @@ export const AccountSwitcherModal = forwardRef<
         </button>
       </div>
       <div className="flex h-10 items-center space-x-2 text-xs">
-        <span>Privacy policy</span>
-        <span className="-mt-[3px]"> . </span> <span>Terms of service</span>
+        <a
+          href="https://oxy.so/company/transparency/policies/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Privacy policy
+        </a>
+        <span className="-mt-[3px]"> . </span>
+        <a
+          href="https://oxy.so/company/transparency/policies/terms-of-service"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Terms of service
+        </a>
       </div>
     </motion.div>
   );

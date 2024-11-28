@@ -12,6 +12,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Avatar } from "../../features/profile";
 
 import getUserById from "../../hooks/getUserById";
+import useCrossDomainStorage from "../../hooks/useCrossDomainStorage";
 
 import styles from "./styles/account-switcher-modal.module.css";
 
@@ -34,13 +35,15 @@ export const AccountSwitcherModal = forwardRef<
 >((props, ref) => {
   const { onClose } = props;
   const { session } = useOxySession();
+  const { get, set } = useCrossDomainStorage();
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const fetchedUser = await getUserById(session?.user?.id);
+        const clientKey = get("clientKey");
+        const fetchedUser = await getUserById(clientKey);
         setUser(fetchedUser);
       } catch (error) {
         if (error instanceof Error) {
@@ -54,13 +57,14 @@ export const AccountSwitcherModal = forwardRef<
     if (session) {
       fetchUser();
     }
-  }, [session]);
+  }, [session, get]);
 
   if (!session) return null;
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (e.currentTarget === e.target) {
+      set("clientKey", "");
       onClose();
     }
   };

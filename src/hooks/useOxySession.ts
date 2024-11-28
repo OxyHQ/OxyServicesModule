@@ -5,6 +5,7 @@ import localforage from "localforage";
 
 import { OXY_AUTH_URL } from "../config";
 import { UserRole } from "../types";
+import useCrossDomainStorage from "./useCrossDomainStorage";
 
 interface SessionModel {
   user: {
@@ -49,10 +50,12 @@ export const useSessionStore = create<SessionState>((set) => {
 
         // If the session ID was not found in the URL parameters, get it from local storage
         if (!clientKey) {
-          clientKey = await localforage.getItem<string>("clientKey");
+          const { get } = useCrossDomainStorage();
+          clientKey = get("clientKey");
         } else {
           // If the session ID was found in the URL parameters, set it in local storage
-          await localforage.setItem<string>("clientKey", clientKey);
+          const { set } = useCrossDomainStorage();
+          set("clientKey", clientKey);
         }
 
         const response = await axios.get(

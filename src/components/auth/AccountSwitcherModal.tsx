@@ -13,7 +13,7 @@ import { Avatar } from "../../features/profile";
 
 import getUserById from "../../hooks/getUserById";
 
-import styles from "./styles/session-owner-modal.module.css";
+import styles from "./styles/account-switcher-modal.module.css";
 
 interface User {
   id: string;
@@ -24,10 +24,15 @@ interface User {
   avatar: string;
 }
 
+interface AccountSwitcherModalProps {
+  onClose: () => void;
+}
+
 export const AccountSwitcherModal = forwardRef<
-  HTMLButtonElement,
-  { onClose: () => void }
->(({ onClose }, ref) => {
+  HTMLDivElement,
+  AccountSwitcherModalProps
+>((props, ref) => {
+  const { onClose } = props;
   const { session } = useOxySession();
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -72,6 +77,7 @@ export const AccountSwitcherModal = forwardRef<
       className={styles.container}
       role="group"
       onClick={handleBackdropClick}
+      ref={ref}
     >
       <button
         className="absolute right-3 top-3 rounded-full bg-indigo-50 p-1 hover:bg-zinc-200"

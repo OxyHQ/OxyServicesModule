@@ -2,25 +2,29 @@ import axios from "axios";
 import { OXY_AUTH_URL } from "../config";
 
 export const getUser = async (id: string | undefined) => {
+  if (!id) {
+    throw new Error("User ID is required");
+  }
   try {
     const response = await axios.get(OXY_AUTH_URL + `/api/users/${id}`);
     return response.data;
   } catch (error: any) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
-      // The request was made but no response was received
-      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-      // http.ClientRequest in node.js
-      console.log(error.request);
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        // Server responded with a status code outside of 2xx
+        throw new Error(
+          `Server responded with status ${error.response.status}: ${error.response.data}`
+        );
+      } else if (error.request) {
+        // Request was made but no response received
+        throw new Error("No response received from server");
+      } else {
+        // Error setting up the request
+        throw new Error(`Axios error: ${error.message}`);
+      }
     } else {
-      // Something happened in setting up the request that triggered an Error
-      console.log("Error", error.message);
+      // Non-Axios error
+      throw error;
     }
-    console.log(error.config);
   }
 };

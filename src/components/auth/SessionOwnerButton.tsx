@@ -60,10 +60,7 @@ export const SessionOwnerButton = () => {
             background="none"
             minViewportWidth={500}
           >
-            <AccountSwitcherModal
-              ref={buttonRef}
-              onClose={() => setIsModalOpen(false)}
-            />
+            <AccountSwitcherModal onClose={() => setIsModalOpen(false)} />
           </Modal>
         )}
       </AnimatePresence>
